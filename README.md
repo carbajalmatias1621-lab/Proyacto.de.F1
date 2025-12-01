@@ -85,7 +85,7 @@ Imprime cada registro del CSV formateado como texto.
 
 ## Nueva Funcionalidad Agregada
 
-### ✔️ *Indicador de Eficiencia del Piloto**
+### ✔️ *Indicador de Eficiencia del Piloto*
 
 Como analistas de datos, se agregó un nuevo cálculo para evaluar el rendimiento completo de un piloto.
 
