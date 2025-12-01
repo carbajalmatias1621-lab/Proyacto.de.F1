@@ -19,4 +19,5 @@ Detecta el piloto que más posiciones ganó del sábado al domingo.
 ⭐ Promedio de posición final de un piloto  
 Calcula el rendimiento promedio de un piloto considerando todas sus carreras registradas.
 > Este indicador se agregó con comentarios dentro del código para facilitar su corrección.
-📂 Estructura del proyecto
+
+
