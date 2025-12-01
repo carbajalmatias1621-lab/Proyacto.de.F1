@@ -1,4 +1,4 @@
-## 📌 **Descripción del Proyecto**
+## **Descripción del Proyecto**
 
 Este proyecto consiste en el desarrollo de una **aplicación de consola en C#** orientada al análisis de datos reales de Fórmula 1.
 El sistema carga información desde un archivo **CSV** con resultados de carreras entre los años **2016 y 2024**, y permite obtener distintos indicadores estadísticos mediante consultas realizadas por el usuario.
@@ -7,7 +7,7 @@ El trabajo se desarrolló para la materia **Programación**, aplicando lectura d
 
 ---
 
-## 🎯 **Objetivos del Trabajo Práctico**
+## **Objetivos del Trabajo Práctico**
 
 * Practicar el manejo de archivos externos (.csv).
 * Integrar estructuras de datos y clases personalizadas.
@@ -18,7 +18,7 @@ El trabajo se desarrolló para la materia **Programación**, aplicando lectura d
 
 ---
 
-## 🧩 **Contenido del CSV**
+## **Contenido del CSV**
 
 Cada línea del archivo contiene:
 
@@ -40,7 +40,7 @@ que transforma una línea del CSV en un objeto válido.
 
 ---
 
-## 🖥️ **Funciones Principales del Programa**
+## **Funciones Principales del Programa**
 
 El menú permite:
 
@@ -83,7 +83,7 @@ Imprime cada registro del CSV formateado como texto.
 
 ---
 
-## ⭐ **Nueva Funcionalidad Agregada **
+## **Nueva Funcionalidad Agregada **
 
 ### ✔️ *Indicador de Eficiencia del Piloto**
 
@@ -96,7 +96,7 @@ El nuevo método implementado fue:
 static void IndicadorEficienciaPiloto()
 ```
 
-### 📌 ¿Qué mide este indicador?
+### ¿Qué mide este indicador?
 
 Combina:
 
@@ -116,7 +116,7 @@ De esta forma:
 * Premia los resultados destacados (podios)
 * Penaliza poca participación (más carreras mejoran la precisión)
 
-### 📤 Ejemplo de salida:
+### Ejemplo de salida:
 
 ```
 Piloto: Max Verstappen
@@ -128,7 +128,7 @@ INDICADOR DE EFICIENCIA: 71.82
 
 ---
 
-## 🛠️ **Tecnologías Utilizadas**
+## **Tecnologías Utilizadas**
 
 * Lenguaje: **C# (.NET)**
 * Paradigma: Programación estructurada + clases modelo
@@ -137,9 +137,8 @@ INDICADOR DE EFICIENCIA: 71.82
 
 ---
 
-## 👥 **Integrantes**
+## **Integrantes**
 
 * Ordoñez
 * Scarponi
-* Carbajal (Matías)
-
+* Carbajal
