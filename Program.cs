@@ -255,8 +255,8 @@ static void IndicadorEficienciaPiloto()
 {
     Console.Write("Ingresa el nombre del piloto: ");
     string piloto = Console.ReadLine().Trim();
-
-    if (string.IsNullOrEmpty(piloto))// si la variable no tiene un valor devuelve lo siguiente
+// si la variable no tiene un valor devuelve lo siguiente
+    if (string.IsNullOrEmpty(piloto))
     {
         Console.WriteLine("Nombre vacío. Volviendo al menú.\n");
         return;
@@ -265,10 +265,11 @@ static void IndicadorEficienciaPiloto()
     int podios = 0;
     double puntosTotales = 0;
     int carreras = 0;
-
-    foreach (var r in datos) // recorre y lee el archivo cvs
+// recorre y lee el archivo cvs
+    foreach (var r in datos) 
     {
-        if (r.Piloto.IndexOf(piloto, StringComparison.OrdinalIgnoreCase) >= 0 && r.PosicionFinal.HasValue)//en la primera condicion busca en pilotos cuantas veces aparece el piloto dado e ignora o toma por igual las minusculas con las mayusculas y en la segunda hace que el valor no este en null
+//en la primera condicion busca en pilotos cuantas veces aparece el piloto dado e ignora o toma por igual las minusculas con las mayusculas y en la segunda hace que el valor no este en null
+        if (r.Piloto.IndexOf(piloto, StringComparison.OrdinalIgnoreCase) >= 0 && r.PosicionFinal.HasValue)
         {
             carreras++;
 
@@ -286,4 +287,5 @@ static void IndicadorEficienciaPiloto()
     Console.WriteLine($"Puntos totales: {puntosTotales}");
     Console.WriteLine($"\n INDICADOR DE EFICIENCIA: {indicador:F2}\n");
 }
+
 
