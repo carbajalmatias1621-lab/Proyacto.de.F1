@@ -83,7 +83,7 @@ Imprime cada registro del CSV formateado como texto.
 
 ---
 
-## **Nueva Funcionalidad Agregada **
+## Nueva Funcionalidad Agregada
 
 ### ✔️ *Indicador de Eficiencia del Piloto**
 
