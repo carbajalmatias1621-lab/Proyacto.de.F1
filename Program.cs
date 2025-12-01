@@ -251,12 +251,12 @@ namespace AnalisisF1
             }
             Console.WriteLine($"\nTotal de registros: {datos.Count}\n");
         }
-       static void IndicadorEficienciaPiloto()
+static void IndicadorEficienciaPiloto()
 {
     Console.Write("Ingresa el nombre del piloto: ");
     string piloto = Console.ReadLine().Trim();
 
-    if (string.IsNullOrEmpty(piloto))
+    if (string.IsNullOrEmpty(piloto))// si la variable no tiene un valor devuelve lo siguiente
     {
         Console.WriteLine("Nombre vacío. Volviendo al menú.\n");
         return;
@@ -266,10 +266,9 @@ namespace AnalisisF1
     double puntosTotales = 0;
     int carreras = 0;
 
-    foreach (var r in datos)
+    foreach (var r in datos) // recorre y lee el archivo cvs
     {
-        if (r.Piloto.IndexOf(piloto, StringComparison.OrdinalIgnoreCase) >= 0 &&
-            r.PosicionFinal.HasValue)
+        if (r.Piloto.IndexOf(piloto, StringComparison.OrdinalIgnoreCase) >= 0 && r.PosicionFinal.HasValue)//en la primera condicion busca en pilotos cuantas veces aparece el piloto dado e ignora o toma por igual las minusculas con las mayusculas y en la segunda hace que el valor no este en null
         {
             carreras++;
 
@@ -279,8 +278,6 @@ namespace AnalisisF1
                 podios++;
         }
     }
-
-    // --- INDICADOR ---
     double indicador = podios + (puntosTotales / carreras);
 
     Console.WriteLine($"Piloto: {piloto}");
@@ -289,3 +286,4 @@ namespace AnalisisF1
     Console.WriteLine($"Puntos totales: {puntosTotales}");
     Console.WriteLine($"\n INDICADOR DE EFICIENCIA: {indicador:F2}\n");
 }
+
