@@ -1,28 +1,145 @@
-# Proyacto.de.F1
-Proyecto en C# que analiza datos históricos de Fórmula 1 utilizando un archivo CSV. Permite consultar podios, rendimiento por temporada, mayor remontada, equipos ordenados y visualizar todos los registros. Incluye un nuevo indicador: promedio de posición final por piloto.
+## 📌 **Descripción del Proyecto**
 
-🏎️ Proyecto: Análisis de Fórmula 1 (2016-2024)
-Este proyecto es una aplicación de consola en C# que analiza datos reales de carreras de Fórmula 1.  
-Utiliza un archivo CSV con información de pilotos, equipos, posiciones de clasificación, posiciones finales y puntos obtenidos.
-📌 Funcionalidades principales
-✔ Cargar datos desde CSV  
-Lee automáticamente todos los registros del archivo `f1_last5years.csv`.
-✔ Buscar podios de un piloto  
-Indica cuántas veces terminó entre los 3 primeros.
-✔ Consultar desempeño de un equipo en una temporada  
-Muestra carreras, pilotos y puntos totales por año.
-#✔ Identificar la mayor remontada  
-Detecta el piloto que más posiciones ganó del sábado al domingo.
-✔ Listar equipos ordenados alfabéticamente  
-✔ Mostrar todos los datos cargados  
-🆕 Nuevo indicador agregado (requerido en la entrega)
-⭐ Promedio de posición final de un piloto  
-Calcula el rendimiento promedio de un piloto considerando todas sus carreras registradas.
-> Este indicador se agregó con comentarios dentro del código para facilitar su corrección.
+Este proyecto consiste en el desarrollo de una **aplicación de consola en C#** orientada al análisis de datos reales de Fórmula 1.
+El sistema carga información desde un archivo **CSV** con resultados de carreras entre los años **2016 y 2024**, y permite obtener distintos indicadores estadísticos mediante consultas realizadas por el usuario.
 
+El trabajo se desarrolló para la materia **Programación**, aplicando lectura de archivos, manipulación de colecciones, validación de datos, ordenamientos, filtrados y creación de nuevas funcionalidades.
 
-👥 Autores
+---
 
-Matías Carbajal
-Alana Ordonez 
-Fabrizzio Scarponi
+## 🎯 **Objetivos del Trabajo Práctico**
+
+* Practicar el manejo de archivos externos (.csv).
+* Integrar estructuras de datos y clases personalizadas.
+* Implementar consultas dinámicas sobre listas.
+* Diseñar un menú interactivo.
+* Añadir un **nuevo indicador propio** como analistas de datos.
+* Documentar correctamente el proyecto.
+
+---
+
+## 🧩 **Contenido del CSV**
+
+Cada línea del archivo contiene:
+
+* Temporada
+* Equipo
+* Piloto
+* Carrera
+* Posición de clasificación
+* Posición final
+* Puntos obtenidos
+
+La clase **ResultadoCarrera** encapsula esta información y provee el método:
+
+```csharp
+public static ResultadoCarrera DesdeLineaCsv(string linea)
+```
+
+que transforma una línea del CSV en un objeto válido.
+
+---
+
+## 🖥️ **Funciones Principales del Programa**
+
+El menú permite:
+
+### **1) Buscar podios de un piloto**
+
+Cuenta cuántas veces un piloto terminó entre los 3 primeros.
+
+---
+
+### **2) Datos de un equipo por temporada**
+
+Permite ingresar un equipo y un año para listar:
+
+* carreras disputadas
+* pilotos
+* puntos obtenidos
+* acumulado total
+
+---
+
+### **3) Mostrar la mayor remontada**
+
+Busca la carrera donde un piloto ganó más posiciones respecto a su clasificación.
+
+---
+
+### **4) Listar equipos ordenados alfabéticamente**
+
+Genera un listado único de equipos sin repetir y ordenado.
+
+---
+
+### **5) Mostrar todos los datos cargados**
+
+Imprime cada registro del CSV formateado como texto.
+
+---
+
+### **6) Salir del programa**
+
+---
+
+## ⭐ **Nueva Funcionalidad Agregada (solicitada en la consigna)**
+
+### ✔️ *Indicador de Eficiencia del Piloto* *(creado por el equipo)*
+
+Como analistas de datos, se agregó un nuevo cálculo para evaluar el rendimiento completo de un piloto.
+
+El nuevo método implementado fue:
+
+```csharp
+// --- INDICADOR NUEVO ---
+static void IndicadorEficienciaPiloto()
+```
+
+### 📌 ¿Qué mide este indicador?
+
+Combina:
+
+* Podios obtenidos
+* Puntos totales
+* Cantidad de carreras disputadas
+
+La fórmula diseñada es:
+
+```
+Indicador = Podios + (PuntosTotales / Carreras)
+```
+
+De esta forma:
+
+* Premia la regularidad (puntos por carrera)
+* Premia los resultados destacados (podios)
+* Penaliza poca participación (más carreras mejoran la precisión)
+
+### 📤 Ejemplo de salida:
+
+```
+Piloto: Max Verstappen
+Carreras: 87
+Podios: 53
+Puntos totales: 1550
+INDICADOR DE EFICIENCIA: 71.82
+```
+
+---
+
+## 🛠️ **Tecnologías Utilizadas**
+
+* Lenguaje: **C# (.NET)**
+* Paradigma: Programación estructurada + clases modelo
+* Lectura de archivos: **System.IO**
+* Colecciones: List<T>, HashSet<T>
+
+---
+
+## 👥 **Integrantes**
+
+* Ordoñez
+* Scarponi
+* Carbajal (Matías)
+
