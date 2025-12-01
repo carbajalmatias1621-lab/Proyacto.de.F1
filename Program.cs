@@ -1,34 +1,34 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
+ using System;
+using System.IO;// Permite trabajar con archivos del cvs
+using System.Collections.Generic;// permite trabajar con listas
 using System.Globalization;
 
 namespace AnalisisF1
 {
-    class ResultadoCarrera
+    class ResultadoCarrera // define lo que representa cada cosa de acuerdo al cvs
     {
         public int Temporada { get; set; }
         public string Equipo { get; set; }
         public string Piloto { get; set; }
         public string Carrera { get; set; }
-        public int? PosicionClasificacion { get; set; }
+        public int? PosicionClasificacion { get; set; } // el int? significa que puede ser nullable el valor
         public int? PosicionFinal { get; set; }
         public double Puntos { get; set; }
 
-        public static ResultadoCarrera DesdeLineaCsv(string linea)
+        public static ResultadoCarrera DesdeLineaCsv(string linea) // dividir de acuerdo a las filas en partes 
         {
-            var partes = linea.Split(',');
-            if (partes.Length < 7) return null;
+            var partes = linea.Split(',');// divide el texto cada vez que hay una coma
+            if (partes.Length < 7) return null; // tiene que haber si o si 7 columnas si no devuelve un valor null
 
             var resultado = new ResultadoCarrera
             {
-                Temporada = int.TryParse(partes[0].Trim(), out int t) ? t : 0,
-                Equipo = partes[1].Trim(),
+                Temporada = int.TryParse(partes[0].Trim(), out int t) ? t : 0,// el .tryParse convierte el texto en int, llama partes[0] para asignarle su valor y lo ultimo si la conversion funciona usa t y si no usa 0
+                Equipo = partes[1].Trim(),//  el .Trim elimina elementos vacios
                 Piloto = partes[2].Trim(),
                 Carrera = partes[3].Trim(),
                 PosicionClasificacion = int.TryParse(partes[4].Trim(), out int pc) ? pc : (int?)null,
                 PosicionFinal = int.TryParse(partes[5].Trim(), out int pf) ? pf : (int?)null,
-                Puntos = double.TryParse(partes[6].Trim(), NumberStyles.Any, CultureInfo.InvariantCulture, out double pts) ? pts : 0.0
+                Puntos = double.TryParse(partes[6].Trim(), NumberStyles.Any, CultureInfo.InvariantCulture, out double pts) ? pts : 0.0 // NumberStyles.Any permite reconocer cualquier estilo numerico y CultureInfo.InvariantCulture interpreta al decimal con punto
             };
 
             return resultado;
@@ -109,6 +109,7 @@ namespace AnalisisF1
             Console.WriteLine("5) Mostrar todos los datos cargados");
             Console.WriteLine("6) Mostrar el promedio");
             Console.WriteLine("7) Salir\n");
+
         }
 
         static void CargarDatosCsv(string ruta)
@@ -253,9 +254,9 @@ namespace AnalisisF1
         static void PromedioPosicionPiloto()
         {
             Console.Write("Ingresa el nombre del piloto: ");
-            string piloto = Console.ReadLine().Trim();
+            string piloto = Console.ReadLine().Trim();// lee la entrada para eliminar los espacios
 
-            if (string.IsNullOrEmpty(piloto))
+            if (string.IsNullOrEmpty(piloto))//si no tiene ningun valor la variable piloto
             {
                 Console.WriteLine("Nombre vacío. Volviendo al menú.\n");
                 return;
@@ -264,17 +265,16 @@ namespace AnalisisF1
             int totalPosiciones = 0;
             int cantidadCarreras = 0;
 
-            foreach (var r in datos)
+            foreach (var r in datos) // recorre y lee el archivo cvs
             {
-                if (r.Piloto.IndexOf(piloto, StringComparison.OrdinalIgnoreCase) >= 0 &&
-                    r.PosicionFinal.HasValue)
+                if (r.Piloto.IndexOf(piloto, StringComparison.OrdinalIgnoreCase) >= 0 && r.PosicionFinal.HasValue)// en la primera condición el indexOf devuelve las veces que se encontro el piloto y StringComparison.OrdinalIgnoreCase toma por igual la minúscula y mayuscula. Ya en la segunda el HasValue sirve para verificar que no sea null
                 {
-                    totalPosiciones += r.PosicionFinal.Value;
+                    totalPosiciones += r.PosicionFinal.Value; //suma todas las posiciones finales del pilotow
                     cantidadCarreras++;
                 }
             }
 
-            if (cantidadCarreras == 0)
+            if (cantidadCarreras == 0) 
             {
                 Console.WriteLine($"No se encontraron carreras para el piloto '{piloto}'.\n");
                 return;
