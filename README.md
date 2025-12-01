@@ -21,3 +21,8 @@ Calcula el rendimiento promedio de un piloto considerando todas sus carreras reg
 > Este indicador se agregó con comentarios dentro del código para facilitar su corrección.
 
 
+👥 Autores
+
+Matías Carbajal
+Alana Ordonez 
+Fabrizzio Scarponi
