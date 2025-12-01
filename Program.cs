@@ -251,37 +251,41 @@ namespace AnalisisF1
             }
             Console.WriteLine($"\nTotal de registros: {datos.Count}\n");
         }
-        static void PromedioPosicionPiloto()
+       static void IndicadorEficienciaPiloto()
+{
+    Console.Write("Ingresa el nombre del piloto: ");
+    string piloto = Console.ReadLine().Trim();
+
+    if (string.IsNullOrEmpty(piloto))
+    {
+        Console.WriteLine("Nombre vacío. Volviendo al menú.\n");
+        return;
+    }
+
+    int podios = 0;
+    double puntosTotales = 0;
+    int carreras = 0;
+
+    foreach (var r in datos)
+    {
+        if (r.Piloto.IndexOf(piloto, StringComparison.OrdinalIgnoreCase) >= 0 &&
+            r.PosicionFinal.HasValue)
         {
-            Console.Write("Ingresa el nombre del piloto: ");
-            string piloto = Console.ReadLine().Trim();// lee la entrada para eliminar los espacios
+            carreras++;
 
-            if (string.IsNullOrEmpty(piloto))//si no tiene ningun valor la variable piloto
-            {
-                Console.WriteLine("Nombre vacío. Volviendo al menú.\n");
-                return;
-            }
+            puntosTotales += r.Puntos;
 
-            int totalPosiciones = 0;
-            int cantidadCarreras = 0;
-
-            foreach (var r in datos) // recorre y lee el archivo cvs
-            {
-                if (r.Piloto.IndexOf(piloto, StringComparison.OrdinalIgnoreCase) >= 0 && r.PosicionFinal.HasValue)// en la primera condición el indexOf devuelve las veces que se encontro el piloto y StringComparison.OrdinalIgnoreCase toma por igual la minúscula y mayuscula. Ya en la segunda el HasValue sirve para verificar que no sea null
-                {
-                    totalPosiciones += r.PosicionFinal.Value; //suma todas las posiciones finales del pilotow
-                    cantidadCarreras++;
-                }
-            }
-
-            if (cantidadCarreras == 0) 
-            {
-                Console.WriteLine($"No se encontraron carreras para el piloto '{piloto}'.\n");
-                return;
-            }
-
-            double promedio = (double)totalPosiciones / cantidadCarreras;
-            Console.WriteLine($"Promedio de posición final de '{piloto}': {promedio:F2}\n");
+            if (r.PosicionFinal.Value >= 1 && r.PosicionFinal.Value <= 3)
+                podios++;
         }
     }
+
+    // --- INDICADOR ---
+    double indicador = podios + (puntosTotales / carreras);
+
+    Console.WriteLine($"Piloto: {piloto}");
+    Console.WriteLine($"Carreras: {carreras}");
+    Console.WriteLine($"Podios: {podios}");
+    Console.WriteLine($"Puntos totales: {puntosTotales}");
+    Console.WriteLine($"\n INDICADOR DE EFICIENCIA: {indicador:F2}\n");
 }
